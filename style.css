@@ -1,10 +1,26 @@
+html, body {
+    background-color: #ffffff;
+    text-align: center;
+}
+
 .player {
+    margin: 0 auto;
     position: relative;
     display: flex;
     width: max-content;
     height: max-content;
     justify-content: center;
     align-items: center;
+    width: 60%;
+    text-align: left;
+}
+
+
+
+video {
+    position: relative;
+    width: 100%;
+    z-index: 2;
 }
 
 .player .player_controls {
@@ -16,6 +32,7 @@
     justify-content: space-around;
     opacity: 0;
     transition: opacity 0.4s;
+    z-index: 3;
 }
 
 .player:hover .player_controls {
@@ -45,6 +62,13 @@
     right: 10px;
     opacity: 0;
     transition: opacity 0.4s;
+    z-index: 4;
+}
+
+.center {
+    position: absolute;
+    bottom: 50px;
+    z-index: 1;
 }
 
 .rpl input {
@@ -73,6 +97,38 @@
     cursor: pointer;
     width: 30px;
     height: 30px;
-    right: 4px;
+    right: 6px;
     font-size: 30px;
+}
+
+.in {
+    width: 500px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    text-align: center;
+}
+
+h1, p {
+    color: #000;
+    text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: #121212;
+    }
+
+    .in {
+        background-color: #2e2e2e;
+        color: #bbb;
+    }
+
+    h1, p {
+        color: #bbb;
+    }
 }
