@@ -11,7 +11,7 @@
     <body>
         <!-- HTML5 Video Tag -->
         <div class="player">
-            <video style="border-radius: 0.8rem" id="video" class="video" width="800" height="450" src="http://49.172.5.156:8080/live/test/index.m3u8"></video>
+            <video style="border-radius: 0.8rem" id="video" class="video" width="800" height="450" src="http://49.172.5.156:8080/live/nezu/index.m3u8"></video>
             <div class="player_controls">
                 <button class="playbutton">►</button>
             </div>
@@ -23,9 +23,6 @@
         
         <!-- Invocation Script -->
         <script>
-            var location = window.location;
-            var nb = location.pathname.split("/")[1];
-            video.src = "http://49.172.5.156:8080/live/"+nb+"/index.m3u8";
 
             const fullScreen = (e) => {
                 e.preventDefault()
