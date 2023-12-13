@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>DNN Radio</title>  
+        <!-- Include hls.js from a CDN -->
+        <script src="https://cdn.tutorialjinni.com/hls.js/1.2.1/hls.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="style.css"> 
+        
+    </head>
+    <body>
+        <!-- HTML5 Video Tag -->
+        <div class="player">
+            <video style="border-radius: 0.8rem" id="video" class="video" width="800" height="450" src="http://49.172.5.156:8080/live/test/index.m3u8"></video>
+            <div class="player_controls">
+                <button class="playbutton">►</button>
+            </div>
+            <div class="rpl">
+                <input type="range" name="volume" class="slider" min="0" max="1" step="0.05" value="1">
+                <button class="full" onclick="fullScreen(event)"><i class="fa fa-expand"></i></button>
+            </div>
+        </div>
+        
+        <!-- Invocation Script -->
+        <script>
+            var location = window.location;
+            var nb = location.pathname.split("/")[1];
+            video.src = nb;
+
+            const fullScreen = (e) => {
+                e.preventDefault()
+                video.requestFullscreen()
+            }
+
+            const video = document.getElementById('video');
+            const ranges = document.querySelector('.slider');
+            if (Hls.isSupported()) {
+              var hls = new Hls();
+              hls.loadSource(video.src);
+              hls.attachMedia(video);
+            }else{
+                alert("Cannot stream HLS, use another video source");
+            }
+
+            const player = document.querySelector('.player');
+            const videos = player.querySelector('.video');
+            const toggle = player.querySelector('.playbutton');
+
+            function togglePlay(){
+                if(videos.paused){
+                    var time = video.duration;
+                    video.currentTime = time;
+                    videos.play();
+                }else{
+                    videos.pause();
+                }
+            }
+            toggle.addEventListener('click', togglePlay);
+
+            function updateButton(){
+                const icon = this.paused ? '►' : '❚❚';
+                toggle.textContent = icon;
+            }
+            videos.addEventListener('play', updateButton);
+            videos.addEventListener('pause', updateButton);
+
+            function handleRangeUpdate() {
+                video[this.name] = this.value;
+            }
+
+            ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+            ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+        </script>
+    </body>
+</html>

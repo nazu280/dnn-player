@@ -1,0 +1,78 @@
+.player {
+    position: relative;
+    display: flex;
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+}
+
+.player .player_controls {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 10px;
+    display: inline-block;
+    justify-content: space-around;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.player:hover .player_controls {
+    opacity: 1;
+}
+
+.player:hover .rpl {
+    opacity: 1;
+}
+
+.player .player_controls button {
+    background: #575757;
+    color: #fff;
+    font-weight: bolder;
+    text-shadow: 2px 1px 2px #000;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    box-shadow: 3px 3px 5px gray;
+}
+
+.rpl {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.rpl input {
+    box-shadow: 3px 3px 5px gray;
+    cursor: pointer;
+}
+
+.rpl button {
+    background: #575757;
+    color: #fff;
+    font-weight: bolder;
+    text-shadow: 2px 1px 2px #000;
+    border-color: rgb(94, 94, 94);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    box-shadow: 3px 3px 5px gray;
+    align-items: center;
+}
+
+.rpl i {
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    right: 4px;
+    font-size: 30px;
+}
